@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {View, ActivityIndicator, Text, StyleSheet} from "react-native";
 import axios from "axios";
 import CustomHeader from "../Components/CustomHeader";
+import { Alert } from "react-native";
 
 const API_KEY = '03735d30261726a88c8a1a715b42db92';
 const API_URL = 'https://api.openweathermap.org/data/2.5/weather'
@@ -10,6 +11,7 @@ const ResultScreen=({route})=>{
     const { city, latitude, longitude } = route.params;
     const [Loading, setLoading] =useState(true);
     const [weatherData, setWeatherData] = useState(null);
+    
 
     useEffect(()=>{
         let params = {};
@@ -28,6 +30,9 @@ const ResultScreen=({route})=>{
 
         params.appid = API_KEY;
         params.units = 'metric';
+
+        console.log('Latitude:', latitude);
+        console.log('Longitude:', longitude);
         
 
     axios
@@ -36,7 +41,13 @@ const ResultScreen=({route})=>{
             setWeatherData(response.data);
         })
         .catch((error)=>{
-            console.error(error);
+            // console.error(error);
+            if(error.response && error.response.status === 404){
+                Alert.alert('City not found. Please check the city name');
+            }
+            else{
+                Alert.alert('An error occured while fetching data');
+            }
         })
         .finally(()=>{
             setLoading(false);

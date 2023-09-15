@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {View, TextInput, StyleSheet,  Pressable, Text} from "react-native";
 import { useFocusEffect } from '@react-navigation/native';
 import * as Location from 'expo-location';
@@ -14,16 +14,22 @@ const HomeScreen=({navigation})=>{
     //current location weather
     const getLocationWeather = async () =>{
         try{
-            const{status} = await Location.requestForegroundPermissionsAsync
+            const{status} =  await Location.requestForegroundPermissionsAsync();
             if(status!='granted'){
                 console.error('Location permission denied');
                 return;
             }
             const location = await Location.getCurrentPositionAsync({});
-            setLatitude(location.coords.latitude.toString());
-            setLongitude(location.coords.longitude.toString());
+            console.log('Location:', location);
+            // setLatitude(location.coords.latitude.toString());
+            // setLongitude(location.coords.longitude.toString());
 
-            navigation.navigate('Result', { city, latitude, longitude });
+            
+            
+            navigation.navigate('Result', { 
+                city, 
+                latitude: location.coords.latitude.toString(),
+                longitude: location.coords.longitude.toString(), });
         }
         catch(error){
             console.error('Error getting current location:', error);
@@ -41,6 +47,8 @@ const HomeScreen=({navigation})=>{
           setLongitude('');
         }, [])
       );
+
+   
 
 
     return(
@@ -96,7 +104,7 @@ const styles = StyleSheet.create({
     container1:{
         backgroundColor:'#EAE6E6',
         width:'60%',
-        height:'14%',
+        height:'10%',
         borderRadius:20,
         borderColor:'#7098FF',
         borderWidth:2,
