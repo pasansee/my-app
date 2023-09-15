@@ -1,6 +1,9 @@
 import React, {useState} from "react";
 import {View, TextInput, StyleSheet,  Pressable, Text} from "react-native";
 import { useFocusEffect } from '@react-navigation/native';
+import * as Location from 'expo-location';
+import CustomHeader from "../Components/CustomHeader";
+
 
 
 const HomeScreen=({navigation})=>{
@@ -8,6 +11,25 @@ const HomeScreen=({navigation})=>{
     const [latitude, setLatitude] = useState('');
     const [longitude, setLongitude] = useState('');
 
+    //current location weather
+    const getLocationWeather = async () =>{
+        try{
+            const{status} = await Location.requestForegroundPermissionsAsync
+            if(status!='granted'){
+                console.error('Location permission denied');
+                return;
+            }
+            const location = await Location.getCurrentPositionAsync({});
+            setLatitude(location.coords.latitude.toString());
+            setLongitude(location.coords.longitude.toString());
+
+            navigation.navigate('Result', { city, latitude, longitude });
+        }
+        catch(error){
+            console.error('Error getting current location:', error);
+        }
+    };
+    
     const handleSearch = () =>{
         navigation.navigate('Result',{city, latitude, longitude });
     };
@@ -23,6 +45,7 @@ const HomeScreen=({navigation})=>{
 
     return(
         <View>
+            <CustomHeader></CustomHeader>
             <View style={styles.container1}>
             <TextInput 
                 placeholder="Enter City" 
@@ -60,7 +83,7 @@ const HomeScreen=({navigation})=>{
             </Pressable>
 
             <Pressable style={styles.button1}>
-                <Text style={styles.text}>Current Weather</Text>
+                <Text onPress={getLocationWeather} style={styles.text}>Current Weather</Text>
 
             </Pressable>
 
@@ -75,7 +98,7 @@ const styles = StyleSheet.create({
         width:'60%',
         height:'14%',
         borderRadius:20,
-        borderColor:'#A46DDB',
+        borderColor:'#7098FF',
         borderWidth:2,
         top:50,
         paddingHorizontal:10,
@@ -91,7 +114,7 @@ const styles = StyleSheet.create({
     },
 
     button:{
-        backgroundColor:'#A46DDB',
+        backgroundColor:'#7098FF',
         width:120,
         height:60,
         alignSelf:'center',
@@ -103,7 +126,7 @@ const styles = StyleSheet.create({
     },
 
     button1:{
-        backgroundColor:'#A46DDB',
+        backgroundColor:'#7098FF',
         width:180,
         height:60,
         alignSelf:'center',

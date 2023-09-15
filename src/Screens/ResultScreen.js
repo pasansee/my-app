@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {View, ActivityIndicator, Text, StyleSheet} from "react-native";
 import axios from "axios";
+import CustomHeader from "../Components/CustomHeader";
 
 const API_KEY = '03735d30261726a88c8a1a715b42db92';
 const API_URL = 'https://api.openweathermap.org/data/2.5/weather'
@@ -53,6 +54,7 @@ const ResultScreen=({route})=>{
     
     return(
         <View>
+        <CustomHeader></CustomHeader>
         {weatherData ? (
           <View style={styles.container}>
             {city?<Text style={styles.text}>City: {weatherData.name}</Text> :null}
@@ -81,7 +83,7 @@ const styles = StyleSheet.create({
         width:'70%',
         height:'50%',
         borderRadius:10,
-        borderColor:'#A46DDB',
+        borderColor:'#7098FF',
         borderWidth:2,
         top:50,
         paddingHorizontal:10,
