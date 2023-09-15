@@ -3,10 +3,6 @@
     "name": "my-app",
     "slug": "my-app",
     "version": "1.0.0",
-    "permissions": [
-      "ACCESS_FINE_LOCATION",
-      "ACCESS_COARSE_LOCATION"
-    ],
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
