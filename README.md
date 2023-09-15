@@ -1,4 +1,4 @@
-![Screenshot_20230915_113716_Expo Go](https://github.com/pasansee/my-app/assets/73629170/f6ab3780-3e81-4685-8300-65614adc7889)# my-app
+# my-app
 ## Tech Used
 React Native, Expo
 
