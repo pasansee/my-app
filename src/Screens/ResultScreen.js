@@ -4,7 +4,7 @@ import axios from "axios";
 import CustomHeader from "../Components/CustomHeader";
 import { Alert } from "react-native";
 
-const API_KEY = '03735d30261726a88c8a1a715b42db92';
+const API_KEY = '';
 const API_URL = 'https://api.openweathermap.org/data/2.5/weather'
 
 const ResultScreen=({route})=>{
