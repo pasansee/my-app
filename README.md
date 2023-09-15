@@ -1,4 +1,4 @@
-# my-app
+![Screenshot_20230915_113716_Expo Go](https://github.com/pasansee/my-app/assets/73629170/f6ab3780-3e81-4685-8300-65614adc7889)# my-app
 ## Tech Used
 React Native, Expo
 
@@ -22,5 +22,8 @@ React Native, Expo
   android emulator
 
 ## The UI
-![Uploading Screenshot_20230915_113726_Expo Go.jpg…]()
+![Screenshot_20230915_113726_Expo Go](https://github.com/pasansee/my-app/assets/73629170/907eb984-ed8f-49e3-b601-edcfe00040cc)
+![Screenshot_20230915_113644_Expo Go](https://github.com/pasansee/my-app/assets/73629170/72c36415-4ec3-401c-b29b-8bf0c4325d89)
+![Screenshot_20230915_113716_Expo Go](https://github.com/pasansee/my-app/assets/73629170/3c3f7a8a-670f-43cc-bf9a-b80e5be1d0ef)
+
 
