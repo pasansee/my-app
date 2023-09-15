@@ -17,8 +17,8 @@ React Native, Expo
 * Change the API_KEY in ResultScreen.js file
 
 #### Step 3:
-* In your terminal run **expo start**
-* Then scan the **QR code**using the Expo Go App if you are using the mobile device or press **a** to run in an 
+* In your terminal run 'expo start'
+* Then scan the **QR code** using the Expo Go App if you are using the mobile device or press **a** to run in an 
   android emulator
 
 ## The UI
